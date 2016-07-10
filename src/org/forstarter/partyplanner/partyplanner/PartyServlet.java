@@ -1,0 +1,69 @@
+package org.forstarter.partyplanner.partyplanner;
+
+import freemarker.core.Environment;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateExceptionHandler;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.util.*;
+
+/**
+ * Created by Norg on 07.07.2016.
+ */
+public class PartyServlet extends HttpServlet {
+    static Configuration cfg;
+    static FoodListBean foodList;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //super.doGet(req, resp);
+        // Create the root hash. We use a Map here, but it could be a JavaBean too.
+        Map<String, Object> root = new HashMap<>();
+
+        // Put string "user" into the root
+        root.put("itemList", foodList.getItemList());
+
+        Template temp = cfg.getTemplate("index.ftlh");
+        resp.setCharacterEncoding("utf-8");
+        Writer out = resp.getWriter();
+
+        try {
+            temp.process(root, out);
+        } catch (Exception e) {}
+//        System.err.println(foodList.getItemList().get(0).foodName);
+    }
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        try {
+            // Create your Configuration instance, and specify if up to what FreeMarker
+// version (here 2.3.25) do you want to apply the fixes that are not 100%
+// backward-compatible. See the Configuration JavaDoc for details.
+            cfg = new Configuration(Configuration.VERSION_2_3_24);
+
+// Specify the source where the template files come from. Here I set a
+// plain directory for it, but non-file-system sources are possible too:
+            cfg.setDirectoryForTemplateLoading(new File(Thread.currentThread().getContextClassLoader().getResource
+                    ("org/forstarter/partyplanner/partyplanner/templates").toURI()));
+
+// Set the preferred charset template files are stored in. UTF-8 is
+// a good choice in most applications:
+            cfg.setDefaultEncoding("UTF-8");
+
+// Sets how errors will appear.
+// During web page *development* TemplateExceptionHandler.HTML_DEBUG_HANDLER is better.
+            cfg.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+
+// Don't log exceptions inside FreeMarker that it will thrown at you anyway:
+            cfg.setLogTemplateExceptions(false);
+
+            foodList = new FoodListBean();
+        }catch (Exception e) {}
+    }
+
+}
