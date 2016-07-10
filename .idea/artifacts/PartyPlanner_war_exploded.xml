@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="PartyPlanner:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/PartyPlanner_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="PartyPlanner" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="freemarker-2.3.24-incubating" />
+          <element id="library" level="project" name="Java EE 6-Java EE 6" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="PartyPlanner/web/Web" />
+    </root>
+  </artifact>
+</component>

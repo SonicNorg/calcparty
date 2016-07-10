@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="freemarker-2.3.24-incubating1">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/out/artifacts/PartyPlanner_war_exploded/WEB-INF/lib/freemarker-2.3.24-incubating.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
