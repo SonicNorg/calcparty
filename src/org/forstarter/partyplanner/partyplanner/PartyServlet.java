@@ -1,6 +1,5 @@
 package org.forstarter.partyplanner.partyplanner;
 
-import freemarker.core.Environment;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateExceptionHandler;
@@ -8,7 +7,6 @@ import freemarker.template.TemplateExceptionHandler;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.io.*;
-import java.nio.charset.Charset;
 import java.util.*;
 
 /**
@@ -30,6 +28,17 @@ public class PartyServlet extends HttpServlet {
         Template temp = cfg.getTemplate("index.ftlh");
         resp.setCharacterEncoding("utf-8");
         Writer out = resp.getWriter();
+        Enumeration<String> params = req.getParameterNames();
+        while(params.hasMoreElements()){
+            String name = params.nextElement();
+            String value = req.getParameter(name);
+            for (FoodListBean.FoodItem item:foodList.getItemList()) {
+                if(item.getId() == Integer.parseInt(name)) {
+                    item.setEaters(Integer.parseInt(value));
+                    item.getCount();
+                }
+            }
+        }
 
         try {
             temp.process(root, out);

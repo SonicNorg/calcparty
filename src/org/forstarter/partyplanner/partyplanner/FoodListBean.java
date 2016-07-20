@@ -48,6 +48,7 @@ public class FoodListBean implements Serializable{
         float k = 0.3f;
         String count;
         float fCount;
+        int id;
 
         public String getFoodName() {
             return foodName;
@@ -66,19 +67,30 @@ public class FoodListBean implements Serializable{
             calcCount();
         }
 
-        public FoodItem(String name, String unit, float k) {
+        public FoodItem(String name, String unit, float k, int id) {
             foodName = name;
             this.unit = unit;
             this.k = k;
+            this.id = id;
 
             calcCount();
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
         }
 
         public FoodItem(Properties properties) {
             this(
                     properties.getProperty("name"),
                     properties.getProperty("unit"),
-                    Float.parseFloat(properties.getProperty("k"))
+                    Float.parseFloat(properties.getProperty("k")),
+                    Integer.parseInt(properties.getProperty("id"))
+
             );
         }
 
