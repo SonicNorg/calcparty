@@ -9,7 +9,7 @@
         <table>
             <#list itemList as item>
                 <tr><td>${item.foodName}</td>
-                    <td><input type="text" name=${item.id} value=${item.eaters}></td>
+                    <td><input type="text" name="${item.id}" value="${item.eaters}"></td>
                     <td>${item.count}</td>
                 </tr>
             </#list>
