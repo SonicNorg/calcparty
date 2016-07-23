@@ -1,15 +1,18 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="PartyPlanner:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/PartyPlanner_war_exploded</output-path>
+    <output-path>$PROJECT_DIR$/target/party_planner-0.0.1</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="PartyPlanner" />
         </element>
         <element id="directory" name="lib">
-          <element id="library" level="project" name="freemarker-2.3.24-incubating" />
-          <element id="library" level="project" name="Java EE 6-Java EE 6" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: org.freemarker:freemarker-gae:2.3.25-incubating" />
         </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/party_planner-0.0.1/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="PartyPlanner/web/Web" />
     </root>

@@ -1,13 +1,8 @@
 <component name="ArtifactManager">
   <artifact type="war" name="PartyPlanner:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/PartyPlanner_war</output-path>
-    <root id="archive" name="PartyPlanner_war.war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="party_planner-0.0.1.war">
       <element id="artifact" artifact-name="PartyPlanner:war exploded" />
-      <element id="directory" name="WEB-INF">
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="Java EE 6-Java EE 6" />
-        </element>
-      </element>
     </root>
   </artifact>
 </component>

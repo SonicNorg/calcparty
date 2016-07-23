@@ -5,7 +5,7 @@
          version="3.1">
     <servlet>
         <servlet-name>PartyPlanner</servlet-name>
-        <servlet-class>org.forstarter.partyplanner.partyplanner.PartyServlet</servlet-class>
+        <servlet-class>org.forstarter.partyplanner.PartyServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>PartyPlanner</servlet-name>
