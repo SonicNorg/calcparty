@@ -58,7 +58,7 @@ public class PartyServlet extends HttpServlet {
 // Specify the source where the template files come from. Here I set a
 // plain directory for it, but non-file-system sources are possible too:
             cfg.setDirectoryForTemplateLoading(
-                new File(Thread.currentThread().getContextClassLoader().getResource("../view/templates/").toURI())
+                new File(Thread.currentThread().getContextClassLoader().getResource("/view/templates/").toURI())
             );
 
 // Set the preferred charset template files are stored in. UTF-8 is
@@ -72,11 +72,12 @@ public class PartyServlet extends HttpServlet {
 // Don't log exceptions inside FreeMarker that it will thrown at you anyway:
             cfg.setLogTemplateExceptions(false);
 
-            foodList = new FoodListBean();
         } catch (Exception e) {
             System.err.println("Error occurred: " + e.getMessage());
             e.printStackTrace(System.err);
         }
+
+        foodList = new FoodListBean();
     }
 
 }
