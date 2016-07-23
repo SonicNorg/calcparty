@@ -1,6 +1,4 @@
-package org.forstarter.partyplanner.test;
-
-import org.forstarter.partyplanner.partyplanner.FoodListBean;
+package org.forstarter.partyplanner;
 
 /**
  * Created by Norg on 07.07.2016.

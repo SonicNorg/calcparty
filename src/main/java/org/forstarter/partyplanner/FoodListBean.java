@@ -1,4 +1,4 @@
-package org.forstarter.partyplanner.partyplanner;
+package org.forstarter.partyplanner;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class FoodListBean implements Serializable{
     static {
         File dir = null;
         try {
-            dir = new File(Thread.currentThread().getContextClassLoader().getResource("org/forstarter/partyplanner/partyplanner/fooditems").toURI());
+            dir = new File(Thread.currentThread().getContextClassLoader().getResource("/fooditems").toURI());
         }catch (Exception e) {}
 
         if (dir.exists())

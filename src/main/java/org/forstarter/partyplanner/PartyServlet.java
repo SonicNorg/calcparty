@@ -1,4 +1,4 @@
-package org.forstarter.partyplanner.partyplanner;
+package org.forstarter.partyplanner;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -25,7 +25,7 @@ public class PartyServlet extends HttpServlet {
         // Put string "user" into the root
         root.put("itemList", foodList.getItemList());
 
-        Template temp = cfg.getTemplate("index.ftlh");
+        Template temp = cfg.getTemplate("index.ftl");
         resp.setCharacterEncoding("utf-8");
         Writer out = resp.getWriter();
         Enumeration<String> params = req.getParameterNames();
@@ -57,8 +57,9 @@ public class PartyServlet extends HttpServlet {
 
 // Specify the source where the template files come from. Here I set a
 // plain directory for it, but non-file-system sources are possible too:
-            cfg.setDirectoryForTemplateLoading(new File(Thread.currentThread().getContextClassLoader().getResource
-                    ("org/forstarter/partyplanner/partyplanner/templates").toURI()));
+            cfg.setDirectoryForTemplateLoading(
+                new File(Thread.currentThread().getContextClassLoader().getResource("../view/templates/").toURI())
+            );
 
 // Set the preferred charset template files are stored in. UTF-8 is
 // a good choice in most applications:
@@ -72,7 +73,10 @@ public class PartyServlet extends HttpServlet {
             cfg.setLogTemplateExceptions(false);
 
             foodList = new FoodListBean();
-        }catch (Exception e) {}
+        } catch (Exception e) {
+            System.err.println("Error occurred: " + e.getMessage());
+            e.printStackTrace(System.err);
+        }
     }
 
 }
