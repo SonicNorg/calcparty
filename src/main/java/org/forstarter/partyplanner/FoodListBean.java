@@ -12,8 +12,11 @@ import java.util.Properties;
 public class FoodListBean implements Serializable{
     private static final long serialVersionUID = 1L;
     private int duration = 3;
+    private int eaters = 8;
+    private float numerousK;
 
     private static ArrayList<FoodItem> itemList = new ArrayList<>();
+    private float hunger = 1.6f;
 
     public int getDuration() {
         return duration;
@@ -24,7 +27,7 @@ public class FoodListBean implements Serializable{
     }
 
 
-    static {
+    {
         File dir = null;
         try {
             dir = new File(Thread.currentThread().getContextClassLoader().getResource("/fooditems").toURI());
@@ -38,9 +41,10 @@ public class FoodListBean implements Serializable{
                     if(f.getName().endsWith(".fi")) {
                         Properties item = new Properties();
                         item.load(new InputStreamReader(new FileInputStream(f), "utf-8"));
-                        itemList.add(new FoodItem(item));
+                        itemList.add(this.new FoodItem(item));
                     }
                 }
+
             }catch (IOException e) {}
     }
 
@@ -50,10 +54,24 @@ public class FoodListBean implements Serializable{
     }
 
     public void update() {
+        int t=0;
+        for (FoodItem item:itemList) {
+            t += item.sort!=1?item.eaters:0;
+        }
+        numerousK = 1f*t/eaters;
+        System.err.println("Numerous K: "+numerousK);
         itemList.forEach(FoodItem::calcCount);
     }
 
-    public static class FoodItem implements Comparable<FoodItem>{
+    public int getEaters() {
+        return eaters;
+    }
+
+    public void setEaters(int eaters) {
+        this.eaters = eaters;
+    }
+
+    public class FoodItem implements Comparable<FoodItem>{
         public static final int SORT_MAIN = 4;
         public static final int SORT_SNACK = 3;
         public static final int SORT_DRINK = 2;
@@ -131,10 +149,35 @@ public class FoodListBean implements Serializable{
         }
 
         private void calcCount() {
-            fCount = getEaters()*k;
+            fCount = calc();
             count = String.format(fCount > 2 ? "%.1f %s" : "%.2f %s", fCount, unit);
         }
 
+        private float calc() {
+            float t;
+            switch (sort) {
+                case SORT_MAIN:
+                    t=numerousK/2;
+                    break;
+                case SORT_DRINK:
+                    t=numerousK/3;
+                    break;
+                case SORT_SPICE:
+                    t=1;
+                    break;
+                default:
+                    t=numerousK;
+            }
+            return getEaters()*k*getDurK()*getHungerK()/t;
+        }
+
+        private float getDurK() {
+            return duration/3;
+        }
+
+        private float getHungerK() {
+            return hunger/1.6f;
+        }
 
         public String getUnit() {
             return unit;
