@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>PartyPlanner</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/main.css" type="text/css">
 </head>
 <body>
     <div class="container">
@@ -12,7 +13,8 @@
             <form action="" method="GET">
                 <table class="table table-striped table-hover">
                     <#list itemList as item>
-                        <tr><td>${item.sort}</td>
+                        <tr>
+                            <td><div class="quarter quarter-${item.sort}"></div></td>
                             <td>${item.foodName}</td>
                             <td><input type="text" name="${item.id?c}" value="${item.eaters}"></td>
                             <td>${item.count}</td>
