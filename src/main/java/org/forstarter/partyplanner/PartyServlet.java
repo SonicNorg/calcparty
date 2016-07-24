@@ -39,7 +39,7 @@ public class PartyServlet extends HttpServlet {
                 }
             }
         }
-
+        foodList.update();
         try {
             temp.process(root, out);
         } catch (Exception e) {}

@@ -12,7 +12,8 @@
             <form action="" method="GET">
                 <table class="table table-striped table-hover">
                     <#list itemList as item>
-                        <tr><td>${item.foodName}</td>
+                        <tr><td>${item.sort}</td>
+                            <td>${item.foodName}</td>
                             <td><input type="text" name="${item.id?c}" value="${item.eaters}"></td>
                             <td>${item.count}</td>
                         </tr>
