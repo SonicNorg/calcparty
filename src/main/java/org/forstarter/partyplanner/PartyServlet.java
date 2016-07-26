@@ -24,6 +24,7 @@ public class PartyServlet extends HttpServlet {
 
         // Put string "user" into the root
         root.put("itemList", foodList.getItemList());
+        root.put("foodList", foodList);
 
         Template temp = cfg.getTemplate("index.ftl");
         resp.setCharacterEncoding("utf-8");
