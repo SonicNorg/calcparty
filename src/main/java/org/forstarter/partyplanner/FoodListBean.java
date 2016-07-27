@@ -14,18 +14,9 @@ public class FoodListBean implements Serializable{
     private int duration = 3;
     private int eaters = 8;
     private float numerousK;
-
-    private static ArrayList<FoodItem> itemList = new ArrayList<>();
     private float hunger = 1.6f;
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
+    private static ArrayList<FoodItem> itemList = new ArrayList<>();
 
     {
         File dir = null;
@@ -59,7 +50,7 @@ public class FoodListBean implements Serializable{
             t += item.sort!=1?item.eaters:0;
         }
         numerousK = 1f*t/eaters;
-        System.err.println("Numerous K: "+numerousK);
+        //System.err.println("Numerous K: "+numerousK);
         itemList.forEach(FoodItem::calcCount);
     }
 
@@ -69,6 +60,22 @@ public class FoodListBean implements Serializable{
 
     public void setEaters(int eaters) {
         this.eaters = eaters;
+    }
+
+    public float getHunger() {
+        return hunger;
+    }
+
+    public void setHunger(float hunger) {
+        this.hunger = hunger;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public class FoodItem implements Comparable<FoodItem>{

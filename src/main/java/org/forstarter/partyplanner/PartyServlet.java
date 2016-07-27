@@ -33,10 +33,23 @@ public class PartyServlet extends HttpServlet {
         while(params.hasMoreElements()){
             String name = params.nextElement();
             String value = req.getParameter(name);
+            switch (name) {
+                case "eaters":
+                    foodList.setEaters(Integer.parseInt(value));
+                    continue;
+                case "duration":
+                    foodList.setDuration(Integer.parseInt(value));
+                    continue;
+                case "hunger":
+                    foodList.setHunger(Float.parseFloat(value));
+                    continue;
+            }
             for (FoodListBean.FoodItem item:foodList.getItemList()) {
                 if(item.getId() == Integer.parseInt(name)) {
-                    item.setEaters(Integer.parseInt(value));
-                    item.getCount();
+                    int eats = Integer.parseInt(value);
+                    item.setEaters(eats);
+                    if(eats > foodList.getEaters())
+                        foodList.setEaters(eats);
                 }
             }
         }

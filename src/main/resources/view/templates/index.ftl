@@ -11,6 +11,9 @@
         <div class="row">
         <h2>PartyPlanner</h2>
             <form action="" method="GET">
+                <input name="eaters" type="range" min="2" max="25" value=${foodList.eaters} step="1" />
+                <input name="duration" type="range" min="3" max="12" value=${foodList.duration} step="3" />
+                <input name="hunger" type="range" min="1" max="2" value=${foodList.hunger} step="0.2" />
                 <table class="table table-striped table-hover">
                     <#list itemList as item>
                         <tr>
