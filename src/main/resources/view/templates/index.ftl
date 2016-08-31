@@ -12,6 +12,12 @@
     <div class="row">
         <h2>PartyPlanner</h2>
     </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <p>Калькулятор закупки для пикника/шашлыка/пьянки. Находится в разработке, о найденных ошибках просьба
+            сообщать на адрес pavel.proger[собака]gmail.com. Будем рады вашим отзывам и предложениям!
+        </div>
+    </div>
     <form action="" method="GET">
         <div class="row">
             <div class="col-xs-3">
@@ -49,7 +55,16 @@
         </div>
         <div class="row">
             <table class="table table-striped table-hover">
-            <#list itemList as item>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Продукт</th>
+                    <th>Едоков</th>
+                    <th>Нужно</th>
+                </tr>
+                </thead>
+                <tbody>
+                <#list itemList as item>
                 <tr>
                     <td>
                         <div class="quarter quarter-${item.sort}"></div>
@@ -58,7 +73,8 @@
                     <td><input type="text" name="${item.id?c}" value="${item.eaters}"></td>
                     <td>${item.count}</td>
                 </tr>
-            </#list>
+                </#list>
+                </tbody>
             </table>
             <input type="submit" value="Рассчитать">
         </div>
@@ -68,10 +84,17 @@
 <script src="./js/bootstrap.min.js"></script>
 <script src="./js/main.js"></script>
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-13219251-12', 'auto');
     ga('send', 'pageview');
