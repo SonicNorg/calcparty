@@ -44,10 +44,10 @@
     <div class="container">
         <form action="" method="GET">
             <div class="row">
-                <div class="col-xs-3">
+                <div class="col-lg-3">
                     <p>Количество гостей</p>
                 </div>
-                <div class="col-xs-9">
+                <div class="col-lg-9">
                     <div class="range range-primary">
                         <input name="eaters" type="range" id="eaters" min="2" max="30" value="${foodList.eaters}" step="1"/>
                         <output id="eaters">${foodList.eaters}</output>
@@ -55,10 +55,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-3">
+                <div class="col-lg-3">
                     <p>Продолжительность (в часах)</p>
                 </div>
-                <div class="col-xs-9">
+                <div class="col-lg-9">
                     <div class="range range-success">
                         <input name="duration" type="range" id="duration" min="2" max="12" value="${foodList.duration}"
                                step="2"/>
@@ -67,10 +67,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-3">
+                <div class="col-lg-3">
                     <p>Прожорливость</p>
                 </div>
-                <div class="col-xs-9">
+                <div class="col-lg-9">
                     <div class="range range-warning">
                         <input name="hunger" type="range" min="1" max="2" value="${foodList.hunger}" step="0.2"/>
                         <output id="duration">${foodList.hunger}</output>
@@ -105,6 +105,20 @@
         </form>
     </div>
 </section>
+
+<!-- Footer -->
+<footer class="text-center">
+    <div class="footer-below">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    Copyright &copy; PartyPlanner 2016
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
 <script src="./js/jquery-3.1.0.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 
