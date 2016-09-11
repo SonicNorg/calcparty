@@ -227,15 +227,38 @@ header .container {
     padding-bottom: 0;
 }
 
+.navbar {
+    text-transform: none;
+}
+
+.navbar-brand {
+    height: 56px;
+    padding: 0 15px;
+}
+
+.navbar-brand .logo {
+    display: inline;
+    margin-right: 10px;
+    width: 56px;
+    max-width: 56px;
+    height: 56px;
+    max-height: 56px;
+}
+
 @media(min-width:768px) {
+    .navbar-shrink .navbar-brand .logo {
+        width: 40px;
+        max-width: 40px;
+        height: 40px;
+        max-height: 40px;
+    }
+    .navbar-shrink .navbar-brand {
+        padding: 4px 15px;
+    }
     header .container {
         padding-top: 120px;
         padding-bottom: 0;
     }
-}
-
-.navbar {
-    text-transform: none;
 }
 
 section {
@@ -243,15 +266,12 @@ section {
 }
 
 table input {
-    width: 120px;
+    width: 80px;
 }
 
 @media(min-width:768px) {
     table {
         font-size: 16px;
-    }
-    table input {
-        width: 180px;
     }
 }
 
