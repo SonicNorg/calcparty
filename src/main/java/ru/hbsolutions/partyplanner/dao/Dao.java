@@ -23,7 +23,10 @@ public abstract class Dao<T> {
     {
         Type type = this.getClass().getGenericSuperclass();
         try {
-            entityClass = (Class<T>) ((type instanceof ParameterizedType) ? ((ParameterizedType) type).getActualTypeArguments()[0] : type);
+            @SuppressWarnings("unchecked")
+            Class<T> clazz = (Class<T>)( (type instanceof ParameterizedType) ? ParameterizedType.class.cast(type).getActualTypeArguments()[0] : type );
+
+            entityClass = clazz;
         } catch (ClassCastException ex) {
             throw new RuntimeException(ex);
         }
