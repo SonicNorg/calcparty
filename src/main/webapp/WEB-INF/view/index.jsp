@@ -44,7 +44,7 @@
 
 <section id="calcultaion">
     <div class="container">
-        <form action="" method="GET">
+        <form action="" method="post">
             <div class="row">
                 <div class="col-lg-6">
                     <p>Количество гостей</p>
@@ -55,7 +55,7 @@
                     <br />
                     <p>Продолжительность (в часах)</p>
                     <div class="range range-success">
-                        <input name="duration" type="range" id="duration" min="2" max="12" value="${foodBean.duration}" step="2"/>
+                        <input name="duration" type="range" id="duration" min="2" max="12" value="${foodBean.duration}" step="1"/>
                         <output data-id="duration">${foodBean.duration}</output>
                     </div>
                     <br />

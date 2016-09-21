@@ -7,7 +7,7 @@
     <groupId>hbs</groupId>
     <artifactId>party_planner</artifactId>
     <packaging>war</packaging>
-    <version>0.0.1</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <properties>
         <servlet.version>3.1.0</servlet.version>
@@ -17,23 +17,19 @@
         <h2.version>1.4.192</h2.version>
         <hibernate.version>5.1.0.Final</hibernate.version>
         <javassist.version>3.18.1-GA</javassist.version>
-
+        <jackson.version>2.6.3</jackson.version>
         <guava.version>19.0</guava.version>
         <slf4j.version>1.7.2</slf4j.version>
         <logback.version>1.0.9</logback.version>
-
-        <freemarket.version>2.3.25-incubating</freemarket.version>
+        <compiler.plugin.version>3.5.1</compiler.plugin.version>
+        <war.plugin.version>3.0.0</war.plugin.version>
+        <testng.version>6.8.21</testng.version>
+        <mockito.version>1.10.19</mockito.version>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker-gae</artifactId>
-            <version>${freemarket.version}</version>
-        </dependency>
-
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -128,6 +124,18 @@
             <version>${javassist.version}</version>
         </dependency>
 
+        <!-- Json -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
         <!-- Utility -->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -146,6 +154,26 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
         </dependency>
+
+        <!-- Testing -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -153,17 +181,23 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler.plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>${war.plugin.version}</version>
+                <configuration>
+                    <!-- Java EE doesn't require web.xml, Maven needs to catch up! -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
             </plugin>
         </plugins>
     </build>
-
 </project>
