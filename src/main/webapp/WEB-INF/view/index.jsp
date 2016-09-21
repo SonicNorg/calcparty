@@ -6,17 +6,29 @@
     <meta charset="utf-8">
     <title>PartyPlanner</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Калькулятор закупки для пикника, шашлыка, пьянки.">
+    <meta name="description" content="Калькулятор закупки для пикника, шашлыка, вечеринки">
     <link rel="shortcut icon" href="<c:url value="/favicon.png"/>">
     <link rel="stylesheet" href="<c:url value="/css/bootstrap.min.css"/>" type="text/css">
     <link rel="stylesheet" href="<c:url value="/css/range-sliders.css"/>" type="text/css">
     <link rel="stylesheet" href="<c:url value="/css/main.css"/>" type="text/css">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Калькулятор закупки для пикника, шашлыка, вечеринки" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="http://calcparty.ru/favicon.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:url" content="http://calcparty.ru/" />
+    <meta property="og:locale" content="ru_RU" />
 
     <!-- Custom Fonts -->
     <link href="<c:url value="/font-awesome/css/font-awesome.min.css"/>" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
+    <!-- Social Share -->
+    <script type="text/javascript" src="//vk.com/js/api/openapi.js?130"></script>
 </head>
 <body id="page-top" class="index">
 
@@ -66,34 +78,53 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="row">
-                        <table class="table table-striped table-hover">
-                            <thead>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th></th>
+                            <th>Продукт</th>
+                            <th style="width:30%">Едоков</th>
+                            <th>Нужно</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="item" items="${foodBean.itemList}">
                             <tr>
-                                <th></th>
-                                <th>Продукт</th>
-                                <th style="width:30%">Едоков</th>
-                                <th>Нужно</th>
+                                <td>
+                                    <div class="quarter quarter-${item.sort}"></div>
+                                </td>
+                                <td>${item.foodName}</td>
+                                <td><input type="text" name="itemMap['${item.id}']" value="${item.eaters}"></td>
+                                <td>${item.count}</td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="item" items="${foodBean.itemList}">
-                                <tr>
-                                    <td>
-                                        <div class="quarter quarter-${item.sort}"></div>
-                                    </td>
-                                    <td>${item.foodName}</td>
-                                    <td><input type="text" name="itemMap['${item.id}']" value="${item.eaters}"></td>
-                                    <td>${item.count}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                        <input type="submit" value="Рассчитать">
-                    </div>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                    <input type="submit" value="Рассчитать">
                 </div>
             </div>
         </form>
+        <div class="row">
+            <div class="col-lg-2">
+                <div id="vk_like"></div>
+                <script type="text/javascript">
+                    VK.init({apiId: 5637974, onlyWidgets: true});
+                    VK.Widgets.Like("vk_like", {type: "button", height: 20});
+                </script>
+            </div>
+            <div class="col-lg-3">
+                <div id="fb-root"></div>
+                <script>(function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.7";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));</script>
+                <div class="fb-like" data-href="http://calcparty.ru/" data-width="280" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+            </div>
+            <div class="col-lg-7"></div>
+        </div>
     </div>
 </section>
 
