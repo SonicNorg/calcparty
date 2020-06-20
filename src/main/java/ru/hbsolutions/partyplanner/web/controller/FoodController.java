@@ -58,7 +58,7 @@ public class FoodController {
     public String calculate(FoodModel foodModel, @ModelAttribute("foodBean") FoodBean foodBean) {
 
         foodBean.setEaters(foodModel.getEaters());
-        foodBean.setDuration(foodModel.getDuration());
+        foodBean.setDuration(Math.round(foodModel.getDuration() * 1.5f));
         foodBean.setHunger(foodModel.getHunger());
 
         foodModel.getItemMap().forEach((id, eats) -> foodBean.getItemList()

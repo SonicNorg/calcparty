@@ -37,6 +37,7 @@ class JpaConfig {
         properties.put("hibernate.connection.charSet", "UTF-8");
 
         properties.put("hibernate.hbm2ddl.auto", "create");
+        properties.put("hibernate.hbm2ddl.charset_name", "UTF-8");
         properties.put("hibernate.hbm2ddl.import_files", "db/sql/data.sql");
         properties.put("hibernate.show_sql", "true");
 
