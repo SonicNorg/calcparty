@@ -4,7 +4,9 @@ RUN mkdir /app
 RUN mkdir /app/libs
 COPY target/*.jar /app
 COPY target/libs /app/libs
+# cannot find resources else
+COPY src /src
 
-WORKDIR /app
+WORKDIR /
 
-CMD ["java", "-jar", "party_planner-0.7.1-SNAPSHOT.jar"]
+CMD ["java", "-Dfile.encoding=UTF-8", "-jar", "/app/party_planner-0.7.1-SNAPSHOT.jar"]
