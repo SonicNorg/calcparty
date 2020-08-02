@@ -1,7 +1,9 @@
 FROM openjdk:8-alpine
 
 RUN mkdir /app
+RUN mkdir /app/libs
 COPY target/*.jar /app
+COPY target/libs /app/libs
 
 WORKDIR /app
 
