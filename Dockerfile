@@ -1,4 +1,4 @@
-FROM openjdk:<version>-alpine
+FROM openjdk:8-alpine
 
 RUN mkdir /app
 COPY target/*.jar /app
