@@ -1,0 +1,22 @@
+language: java
+sudo: true
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+    - $HOME/.m2/
+jdk:
+  - openjdk8
+services:
+  - docker
+before_install:
+  - chmod +x ./mvnw
+before_deploy:
+  - docker build --force-rm -t $DOCKER_USERNAME/party:"`echo $TRAVIS_BRANCH | tr / .`" --label party . && docker images
+  - chmod +x ./dock-push.sh
+deploy:
+  on:
+    all_branches: true
+  skip_cleanup: true
+  provider: script
+  script: bash ./dock-push.sh

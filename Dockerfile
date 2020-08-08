@@ -4,7 +4,7 @@ RUN mkdir /app
 RUN mkdir /app/libs
 COPY target/*.jar /app
 COPY target/libs /app/libs
-# cannot find resources else
+# cannot find resources without it
 COPY src /src
 
 WORKDIR /
