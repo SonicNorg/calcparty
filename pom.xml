@@ -17,7 +17,7 @@
     <properties>
         <servlet.version>3.1.0</servlet.version>
         <h2.version>1.4.192</h2.version>
-        <hibernate.version>5.1.0.Final</hibernate.version>
+        <hibernate.version>5.3.20.Final</hibernate.version>
         <guava.version>19.0</guava.version>
         <slf4j.version>1.7.2</slf4j.version>
         <logback.version>1.0.9</logback.version>
